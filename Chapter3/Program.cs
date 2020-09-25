@@ -15,13 +15,11 @@ namespace Chapter3 {
             {
                 12,87,94,14,53,20,40,35,76,91,31,17,48,
             };
-            
-            var value = numbers.Where(s => s >= 50);
-            foreach (var item in value)
+            var select = numbers.Select(s => s * 2).ToList();
+            foreach (var item in select)
             {
                 Console.WriteLine(item);
             }
-
         }
     }
 }

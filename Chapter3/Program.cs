@@ -11,25 +11,13 @@ namespace Chapter3 {
         public delegate bool Judgement(int value);
 
         static void Main(string[] args) {
-            var names = new List<string>()
+            var numbers = new List<int>()
             {
-                "Tokyo","New Delhe","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
+                12,87,94,14,53,20,40,35,76,91,31,17,48,
             };
-            //遅延実行
-            var query = names.Where(s => s.Length <= 5).ToList();
+            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
+            Console.WriteLine(exists);
 
-            foreach (string s in query)
-            {
-                Console.WriteLine(s);
-            }
-            Console.WriteLine("----------------------------");
-
-            names[0] = "Osaka";
-            foreach (var item in query)
-            {
-                Console.WriteLine(item);
-            }
-            
         }
     }
 }

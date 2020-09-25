@@ -11,15 +11,25 @@ namespace Chapter3 {
         public delegate bool Judgement(int value);
 
         static void Main(string[] args) {
-            var list = new List<string>()
+            var names = new List<string>()
             {
                 "Tokyo","New Delhe","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
             };
+            //遅延実行
+            var query = names.Where(s => s.Length <= 5).ToList();
 
-            //list.ForEach(s => Console.WriteLine(s));
+            foreach (string s in query)
+            {
+                Console.WriteLine(s);
+            }
+            Console.WriteLine("----------------------------");
 
-            list.ConvertAll(s => s.ToUpper()).ForEach(s => Console.WriteLine(s));                     
-
+            names[0] = "Osaka";
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
+            
         }
     }
 }

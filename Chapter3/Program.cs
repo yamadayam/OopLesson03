@@ -17,13 +17,12 @@ namespace Chapter3 {
                 "Tokyo","New Delhe","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
             };
             
-            //3
-            var whe = names.Where(s => s.Contains('o')).ToArray();
-            foreach (var item in whe)
+            //4
+            var sel = names.Where(s => s.Contains('B')).Select(s=>s.Length);
+            foreach (var item in sel)
             {
                 Console.WriteLine(item);
             }
-            
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,26 +12,30 @@ namespace Chapter3 {
         public delegate bool Judgement(int value);
 
         static void Main(string[] args) {
-            var numbers = new List<int>()
+            var names = new List<string>()
             {
-                12,87,94,14,53,20,40,35,76,91,31,17,48,
+                "Tokyo","New Delhe","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
             };
-            var exists = numbers.Exists(s => s % 8 == 0 || s % 9 == 0);
-            Console.WriteLine(exists);
-
-            numbers.ForEach(s => Console.WriteLine(s/2));
-
-            var value = numbers.Where(s => s >= 50);
-            foreach (var item in value)
+            //1
+            var line = Console.ReadLine();
+            var index = names.FindIndex(s=>s==line);
+            Console.WriteLine(index);
+            //2
+            var value = names.Count(s => s.Contains('o'));
+            Console.WriteLine(value);
+            //3
+            var whe = names.Where(s => s.Contains('o')).ToArray();
+            foreach (var item in whe)
+            {
+                Console.WriteLine(item);
+            }
+            //4
+            var sel = names.Where(s => s.Contains('B')).Select(s=>s.Length);
+            foreach (var item in sel)
             {
                 Console.WriteLine(item);
             }
 
-            var select = numbers.Select(s => s * 2).ToList();
-            foreach (var item in select)
-            {
-                Console.WriteLine(item);
-            }
         }
     }
 }

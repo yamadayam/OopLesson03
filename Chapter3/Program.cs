@@ -16,10 +16,10 @@ namespace Chapter3 {
             {
                 "Tokyo","New Delhe","Bangkok","London","Paris","Berlin","Canberra","Hong Kong",
             };
-            //1
-            var line = Console.ReadLine();
-            var index = names.FindIndex(s=>s==line);
-            Console.WriteLine(index); 
+            
+            //2
+            var value = names.Count(s => s.Contains('o'));
+            Console.WriteLine(value);
             
 
         }

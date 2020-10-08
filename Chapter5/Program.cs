@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace Chapter5 {
     class Program {
         static void Main(string[] args) {
-            #region 5.1
+#if false
+#region 5.1
             Console.WriteLine("------5.1------");
             Console.Write("文字列１：");
             string str1 = Console.ReadLine();
@@ -18,16 +19,16 @@ namespace Chapter5 {
                 Console.WriteLine("等しい");
             else
                 Console.WriteLine("等しくない");
-            #endregion
-            #region 5.2
+#endregion
+#region 5.2
             Console.WriteLine("------5.2------");
             string str3 = Console.ReadLine();
             if (int.TryParse(str3, out int s1))
             {
                 Console.WriteLine(s1.ToString("#,0.0000"));
             }
-            #endregion
-            #region 5.3
+#endregion
+#region 5.3
             //5.3.1
             Console.WriteLine("------5.1.3------");
             string str4 = "jackdaws love my big sphinx of quartz";
@@ -53,16 +54,17 @@ namespace Chapter5 {
             Console.WriteLine();
             
             //5.3.5
-            var s1 = str4.Split(' ').ToArray();
+            var ss = str4.Split(' ').ToArray();
             var sb = new StringBuilder();
-            foreach (var item in s1)
+            foreach (var item in ss)
             {
                 sb.Append(item+' ');
             }
             var tex = sb.ToString();
             Console.WriteLine(sb);
-            #endregion
-            #region 5.4
+#endregion
+#endif
+#region 5.4
             Console.WriteLine("------5.4------");
             var text = "Novelist=谷口潤一郎;BestWork=春琴抄;Born=1886";
             var array = text.Split('=',';');
@@ -70,7 +72,7 @@ namespace Chapter5 {
             Console.WriteLine("{0}:{1}", ToJapanese(array[0]), array[1]);
             Console.WriteLine("{0}:{1}", ToJapanese(array[2]), array[3]);
             Console.WriteLine("{0}:{1}", ToJapanese(array[4]), array[5]);
-            #endregion
+#endregion
 
         }
         static string ToJapanese(string key) {

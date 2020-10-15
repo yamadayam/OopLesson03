@@ -51,21 +51,17 @@ namespace Chapter6 {
             var book = Books.GetBooks().Where(s => s.Title == "ワンダフル・C#ライフ" );
             foreach (var books in book)
             {
-                Console.Write($"価格：{books.Price},ページ数：{books.Pages}");
+                Console.Write($"価格：{books.Price}円,ページ数：{books.Pages}");
             }
             
             Console.WriteLine("\n------6.2.2------");
-            Console.WriteLine(Books.GetBooks().Where(s => s.Title.Contains("C#")).Count());
+            Console.WriteLine(Books.GetBooks().Count(s => s.Title.Contains("C#")));
             
             Console.WriteLine("\n------6.2.3------");
-            Console.WriteLine(Books.GetBooks().Where(s => s.Title.Contains("C#")).Select(s => s.Pages).Average());
+            Console.WriteLine(Books.GetBooks().Where(s => s.Title.Contains("C#")).Average(s => s.Pages));
 
             Console.WriteLine("\n------6.2.4------");
-            var codes = Books.GetBooks().Where(s => s.Price >= 4000).Take(1).Select(s => s.Title);
-            foreach (var code in codes)
-            {
-                Console.WriteLine(code);
-            }
+            Console.WriteLine(Books.GetBooks().FirstOrDefault(s => s.Price >= 4000).Title);
 
             Console.WriteLine("\n------6.2.5------");
             Console.WriteLine(Books.GetBooks().Where(s => s.Price < 4000).Max(s => s.Pages));
@@ -74,7 +70,7 @@ namespace Chapter6 {
             var orderPrice = Books.GetBooks().Where(s => s.Pages >= 400).OrderByDescending(s => s.Price);
             foreach (var price in orderPrice)
             {
-                Console.WriteLine($"タイトル：{price.Title},ページ数{price.Price}");
+                Console.WriteLine($"タイトル：{price.Title},価格：{price.Price}円");
             }
 
             Console.WriteLine("\n------6.2.7------");
@@ -84,7 +80,19 @@ namespace Chapter6 {
                 Console.WriteLine($"{title.Title}");
             }
 
+            //全ての書籍から「C#」の文字がいくつあるかをカウントする
+            int count = 0;
 
+            foreach (var book1 in Books.GetBooks().Where(b=>b.Title.Contains("C#"))){
+                for (int i = 0; i < book1.Title.Length-1; i++){
+                    if ((book1.Title[i] == 'C') && (book1.Title[i + 1] == '#')){
+                        count++;
+                    }
+                }
+            }    
+            
+            Console.WriteLine($"文字列「C#]の個数は{count}です。");
+                      
             #endregion
 #endif
         }

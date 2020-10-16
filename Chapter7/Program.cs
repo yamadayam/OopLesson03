@@ -16,7 +16,7 @@ namespace Chapter7 {
             
         }
         static void Exercise1_1(string text) {            
-            var dict = new Dictionary<char, int>();
+            var dict = new SortedDictionary<char, int>();
             
             foreach (var item in text.ToUpper()) {
                 if ('A' <= item && item <= 'Z') {
@@ -28,7 +28,7 @@ namespace Chapter7 {
                 }
             }
 
-            foreach (var item in dict.OrderBy(s => s.Key)) {
+            foreach (var item in dict) {
                 Console.WriteLine("{0}：{1}", item.Key, item.Value);
             }
 

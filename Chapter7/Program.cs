@@ -18,7 +18,7 @@ namespace Chapter7 {
         static void Exercise1_1(string text) {            
             var dict = new Dictionary<char, int>();
             
-            foreach (var item in text.ToUpper()) {                
+            foreach (var item in text.ToUpper()) {
                 if ('A' <= item && item <= 'Z') {
                     if (dict.ContainsKey(item)) {
                         dict[item]++;

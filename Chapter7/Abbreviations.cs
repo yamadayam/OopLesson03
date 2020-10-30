@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Chapter7 {
     // List 7-19
     // 略語と対応する日本語を管理するクラス
-    class Abbreviations {
+    class Abbreviations  {
         private Dictionary<string, string> _dict = new Dictionary<string, string>();
 
         public int Count {
@@ -30,10 +30,10 @@ namespace Chapter7 {
             return result;
         }
 
-        public void Three() {
+        public void Str() {
             Console.WriteLine();
             foreach (var item in _dict.OrderByDescending(s=>s.Key.Length)) {
-                if (item.Key.Length<=3) {
+                if (item.Key.Length == 3) {
                     Console.WriteLine($"{item.Key}:{item.Value}");
                 }
             }

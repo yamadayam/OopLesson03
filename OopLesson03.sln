@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter6", "Chapter6\Chapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter7", "Chapter7\Chapter7.csproj", "{30DCD2C8-76A8-41E8-9462-57B6DA269384}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendMailApp", "SendMailApp\SendMailApp.csproj", "{E64E59EE-B82C-4C90-9F01-9D381B7AC42A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{30DCD2C8-76A8-41E8-9462-57B6DA269384}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30DCD2C8-76A8-41E8-9462-57B6DA269384}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30DCD2C8-76A8-41E8-9462-57B6DA269384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64E59EE-B82C-4C90-9F01-9D381B7AC42A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64E59EE-B82C-4C90-9F01-9D381B7AC42A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64E59EE-B82C-4C90-9F01-9D381B7AC42A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64E59EE-B82C-4C90-9F01-9D381B7AC42A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

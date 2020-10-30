@@ -41,12 +41,12 @@ namespace Chapter7 {
                 Console.WriteLine("{0}={1}", item.Key, item.Value);
             }
             Console.WriteLine();
-
+            //演習問題
             Console.WriteLine($"単語数:{abbrs.Count}");
 
             Console.WriteLine(abbrs.Remove("ASEAN"));
-
-            abbrs.Three();
+            
+            abbrs.Str();
         }
     }
 }

@@ -41,9 +41,17 @@ namespace SendMailApp {
             try {
                 MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
 
+                if (tbCc.Text != "") {
+                    msg.CC.Add(tbCc.Text);
+                }                            
+                if (tbBcc.Text != "") {
+                    msg.Bcc.Add(tbBcc.Text);
+                }
+                
                 msg.Subject = tbTitle.Text;//件名
                 msg.Body = tbBody.Text;//本文
                 
+
                 sc.Host = "smtp.gmail.com";//SMTPサーバーの設定
                 sc.Port = 587;
                 sc.EnableSsl = true;

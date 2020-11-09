@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace SendMailApp {
     public class Config {
         //単一のインスタンス
         private static Config instance;
-
         //インスタンスの取得
         public static Config GetInstace() {
             if (instance == null) {
@@ -57,6 +59,24 @@ namespace SendMailApp {
             Port = port;            
             Ssl = ssl;
             return true;
+        }
+
+        //シリアル化 P305
+        public void Serialise() {
+            Config config = new Config();
+            using (var writer = XmlWriter.Create("config.xml")) {
+                var serializer = new XmlSerializer(config.GetType());
+                serializer.Serialize(writer, config);
+            }
+        }
+        //逆シリアル化 P307
+        public void DeSerialise() {
+            Config config = new Config();
+            using (var reader = XmlReader.Create(new StringReader("config.xml"))) {
+                var serializer = new XmlSerializer(typeof(Config));
+                var cf = serializer.Deserialize(reader) as Config;//例外出る
+                Console.WriteLine(cf);
+            }
         }
     }
 }

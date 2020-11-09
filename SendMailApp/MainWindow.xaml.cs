@@ -38,12 +38,13 @@ namespace SendMailApp {
 
         //メール送信処理
         private void btOk_Click(object sender, RoutedEventArgs e) {
+            Config cf = Config.GetInstace();
             try {
                 MailMessage msg = new MailMessage("ojsinfosys01@gmail.com", tbTo.Text);
 
                 if (tbCc.Text != "") {
                     msg.CC.Add(tbCc.Text);
-                }                            
+                }
                 if (tbBcc.Text != "") {
                     msg.Bcc.Add(tbBcc.Text);
                 }
@@ -74,8 +75,7 @@ namespace SendMailApp {
         private void btConfig_Click(object sender, RoutedEventArgs e) {
             ConfigWindow configWindow = new ConfigWindow();//設定画面のインスタンスを生成
             configWindow.ShowDialog();
-            Config.GetInstace();
-            
+            Config.GetInstace();            
         }
 
         //メインウィンドウがロードされるタイミングで呼び出される

@@ -50,17 +50,7 @@ namespace SendMailApp {
                 if (tbBcc.Text != "") {
                     msg.Bcc.Add(tbBcc.Text);
                 }
-
-                var sel = addfile.SelectedIndex;
-                string jpgname = sel.ToString();
-                Attachment attachment;
-                attachment = new Attachment(jpgname);
-                //attachment = new System.Net.Mail.Attachment(datapath+jpgname);//添付ファイルのパスを指定する
-
-                attachment.ContentType = new System.Net.Mime.ContentType("image/jpeg");
-                //Attachmentsに追加する
-                msg.Attachments.Add(attachment);
-
+                
                 msg.Subject = tbTitle.Text;//件名
                 msg.Body = tbBody.Text;//本文
                 
@@ -70,6 +60,16 @@ namespace SendMailApp {
                 sc.EnableSsl = cf.Ssl;
                 sc.Credentials = new NetworkCredential(cf.MailAddress, cf.PassWord);
 
+
+                try {
+                    //msg.Attachments.Add(new Attachment(addfile.));//froeach
+                }
+                catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+                
+                //件名と本文、添付ファイルを送信する
+                sc.Send(msg);
                 //sc.Send(msg);//送信
                 sc.SendMailAsync(msg);
 

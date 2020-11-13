@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -48,7 +50,17 @@ namespace SendMailApp {
                 if (tbBcc.Text != "") {
                     msg.Bcc.Add(tbBcc.Text);
                 }
-                
+
+                var sel = addfile.SelectedIndex;
+                string jpgname = sel.ToString();
+                Attachment attachment;
+                attachment = new Attachment(jpgname);
+                //attachment = new System.Net.Mail.Attachment(datapath+jpgname);//添付ファイルのパスを指定する
+
+                attachment.ContentType = new System.Net.Mime.ContentType("image/jpeg");
+                //Attachmentsに追加する
+                msg.Attachments.Add(attachment);
+
                 msg.Subject = tbTitle.Text;//件名
                 msg.Body = tbBody.Text;//本文
                 
@@ -71,20 +83,59 @@ namespace SendMailApp {
         private void btCancel_Click(object sender, RoutedEventArgs e) {
             sc.SendAsyncCancel();
         }
-
+        //設定ボタンイベントハンドラ
         private void btConfig_Click(object sender, RoutedEventArgs e) {
+            ConfigWindowShow();
+        }
+        //設定画面表示
+        private static void ConfigWindowShow() {
             ConfigWindow configWindow = new ConfigWindow();//設定画面のインスタンスを生成
             configWindow.ShowDialog();
-            Config.GetInstace();            
         }
 
         //メインウィンドウがロードされるタイミングで呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            Config.GetInstace().DeSerialise();
+            try {
+                Config.GetInstace().DeSerialise();
+            }
+            catch(FileNotFoundException) {
+                ConfigWindowShow();//ファイルが存在しないので設定画面を先に表示
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+
         }
         //メインウィンドウが閉じられるタイミングで呼び出される
         private void Window_Closed(object sender, EventArgs e) {
-            Config.GetInstace().Serialise();
+            try {
+                Config.GetInstace().Serialise();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+
+        private void btAddfile_Click(object sender, RoutedEventArgs e) {
+            var dialog = new OpenFileDialog();
+            
+            // ダイアログを表示する
+            if (dialog.ShowDialog() == true) {
+                //string readText = File.ReadAllText(dialog.FileName);
+                addfile.Items.Add(dialog.FileName);
+            }
+        }
+
+        private void btDelete_Click(object sender, RoutedEventArgs e) {
+            try {
+                int sel = addfile.SelectedIndex;
+                addfile.Items.RemoveAt(sel);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

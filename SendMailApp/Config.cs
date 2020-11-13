@@ -63,19 +63,16 @@ namespace SendMailApp {
 
         //シリアル化 P305
         public void Serialise() {
-            Config config = new Config();
             using (var writer = XmlWriter.Create("config.xml")) {
-                var serializer = new XmlSerializer(config.GetType());
-                serializer.Serialize(writer, config);
+                var serializer = new XmlSerializer(instance.GetType());
+                serializer.Serialize(writer, instance);
             }
         }
         //逆シリアル化 P307
         public void DeSerialise() {
-            Config config = new Config();
             using (var reader = XmlReader.Create(new StringReader("config.xml"))) {
                 var serializer = new XmlSerializer(typeof(Config));
-                var cf = serializer.Deserialize(reader) as Config;//例外出る
-                Console.WriteLine(cf);
+                instance = serializer.Deserialize(reader) as Config;
             }
         }
     }

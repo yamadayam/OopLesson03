@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="400" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="MainWindow" Height="600" Width="1500" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,8 +16,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="15*"/>
-            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="46*"/>
+            <ColumnDefinition Width="544*"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="280*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" Text="件名:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox x:Name="tbTitle"  Grid.Row="0" Grid.Column="1" Margin="5" FontSize="20"/>
@@ -28,12 +30,17 @@
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Bcc:" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox x:Name="tbBcc" Grid.Row="3" Grid.Column="1" Margin="5" FontSize="20"/>
         <TextBlock Grid.Row="4" Grid.Column="0" Text="本文:" FontSize="20" HorizontalAlignment="Center" />
-        <TextBox x:Name="tbBody" Grid.Row="4" Grid.Column="1" Margin="5" FontSize="20"/>
+        <TextBox x:Name="tbBody" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Margin="5" FontSize="20"/>
         <StackPanel Grid.ColumnSpan="2" Grid.Row="5" Grid.Column="0" 
                     Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="btCancel" Content="キャンセル" Margin="7" Width="100" Height="25" Click="btCancel_Click"/>
-            <Button x:Name="btOk" Content="送信" Margin="7" Width="100" Height="25" Click="btOk_Click"/>
+            <Button x:Name="btCancel" Content="キャンセル" Margin="7" Width="100" Height="40" Click="btCancel_Click"/>
+            <Button x:Name="btOk" Content="送信" Margin="7" Width="100" Height="40" Click="btOk_Click"/>
         </StackPanel>
         <Button x:Name="btConfig" Grid.Row="5" Margin="10" Content="設定" Click="btConfig_Click"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="添付ファイル:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ListBox x:Name="addfile" Grid.Row="0" Grid.RowSpan="4" Grid.Column="3" Margin="3"/>
+        <Button x:Name="btAddfile" Grid.Row="2" Grid.Column="2" Content="追加" Margin="3" Click="btAddfile_Click"/>
+        <Button x:Name="btDelete" Grid.Row="3" Grid.Column="2" Content="削除" Margin="3" Click="btDelete_Click"/>
     </Grid>
 </Window>

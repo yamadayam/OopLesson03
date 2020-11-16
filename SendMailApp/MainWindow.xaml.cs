@@ -62,14 +62,15 @@ namespace SendMailApp {
 
 
                 try {
-                    //msg.Attachments.Add(new Attachment(addfile.));//froeach
+                    foreach (var item in addfile.SelectedItems) {
+                        msg.Attachments.Add(new Attachment(item.ToString()));
+                    };                   
                 }
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
                 
                 //件名と本文、添付ファイルを送信する
-                sc.Send(msg);
                 //sc.Send(msg);//送信
                 sc.SendMailAsync(msg);
 
@@ -113,8 +114,7 @@ namespace SendMailApp {
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }
-            
+            }            
         }
 
         private void btAddfile_Click(object sender, RoutedEventArgs e) {
@@ -122,15 +122,13 @@ namespace SendMailApp {
             
             // ダイアログを表示する
             if (dialog.ShowDialog() == true) {
-                //string readText = File.ReadAllText(dialog.FileName);
                 addfile.Items.Add(dialog.FileName);
             }
         }
 
         private void btDelete_Click(object sender, RoutedEventArgs e) {
             try {
-                int sel = addfile.SelectedIndex;
-                addfile.Items.RemoveAt(sel);
+                addfile.Items.RemoveAt(addfile.SelectedIndex);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);

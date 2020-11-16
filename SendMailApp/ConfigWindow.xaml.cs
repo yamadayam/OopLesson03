@@ -68,13 +68,13 @@ namespace SendMailApp {
         }
         //設定画面ロード時に一度だけ呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            //Config cf = Config.GetInstace();
-            //tbSmtp.Text = cf.Smtp;
-            //tbUserName.Text = cf.MailAddress;
-            //tbPassWord.Password = cf.PassWord;
-            //tbPort.Text = cf.Port.ToString();
-            //cbSsl.IsChecked = cf.Ssl;
-            //tbSender.Text = cf.MailAddress;
+            Config cf = Config.GetInstace();
+            tbSmtp.Text = cf.Smtp;
+            tbUserName.Text = cf.MailAddress;
+            tbPassWord.Password = cf.PassWord;
+            tbPort.Text = cf.Port.ToString();
+            cbSsl.IsChecked = cf.Ssl;
+            tbSender.Text = cf.MailAddress;
         }
     }
 }

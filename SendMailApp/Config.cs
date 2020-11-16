@@ -65,7 +65,7 @@ namespace SendMailApp {
         public void Serialise() {
             using (var writer = XmlWriter.Create(new StreamWriter("Config.xml"))) {
                 var serializer = new XmlSerializer(instance.GetType());
-                serializer.Serialize(writer, instance);                
+                serializer.Serialize(writer, instance);
             }
         }
         //逆シリアル化 P307

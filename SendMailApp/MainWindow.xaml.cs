@@ -69,10 +69,25 @@ namespace SendMailApp {
                 catch (Exception ex) {
                     MessageBox.Show(ex.Message);
                 }
-                
+
+                if (msg.Body=="" || msg.Subject=="") {
+                    MessageBoxResult result = MessageBox.Show("本文か件名が入力されていません。このまま送信しますか？",
+                                                      "エラー", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK) {
+                        sc.SendMailAsync(msg);
+                    } else if (result == MessageBoxResult.Cancel) {
+                        //　「キャンセル」ボタンを押した場合の処理
+                        
+                    } else {
+                        //　その他の場合の処理
+                    }
+                } else {
+                    sc.SendMailAsync(msg);
+                }
+
                 //件名と本文、添付ファイルを送信する
                 //sc.Send(msg);//送信
-                sc.SendMailAsync(msg);
+                //sc.SendMailAsync(msg);
 
             }
             catch (Exception ex) {

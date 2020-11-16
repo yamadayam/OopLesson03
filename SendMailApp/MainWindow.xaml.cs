@@ -62,7 +62,7 @@ namespace SendMailApp {
 
 
                 try {
-                    foreach (var item in addfile.SelectedItems) {
+                    foreach (var item in addfile.SelectedItems) {　
                         msg.Attachments.Add(new Attachment(item.ToString()));
                     };                   
                 }

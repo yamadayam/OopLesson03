@@ -127,9 +127,12 @@ namespace SendMailApp {
             try {
                 Config.GetInstace().Serialise();
             }
+            catch (IOException) {
+                MessageBox.Show("変更は保存されませんでした","空のファイル");
+            }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }            
+            }
         }
 
         private void btAddfile_Click(object sender, RoutedEventArgs e) {

@@ -54,8 +54,8 @@ namespace SendMailApp {
         }
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e) {
-            MessageBoxResult result = MessageBox.Show("変更が反映されていません",
-                                                      "エラー",MessageBoxButton.OKCancel);
+            MessageBoxResult result = MessageBox.Show("閉じますか？",
+                                                      "警告",MessageBoxButton.OKCancel);
             if (result == MessageBoxResult.OK) {
                 this.Close();
             }
